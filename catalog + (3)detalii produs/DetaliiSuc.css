@@ -1,12 +1,12 @@
 
 .container{
-	width: max-width;
+	width: 100%;
 	display: flex;
 }
 
 .left-column{
 	width:50%;
-	psition: relative;
+	position: relative;
 }
 
 .right-column{
@@ -17,7 +17,7 @@
 .name{
 	font-size: 50px;
 	margin-left: 120px;
-	float: left-side;
+	float: left;
 }
 
 .img{
@@ -38,7 +38,6 @@
 
 .cart{
 	border: 1px solid red;
-  outline: 8px 5px 0px 5px;
   padding: 8px;
   color: red;
   background-color: #bfbfbf;
