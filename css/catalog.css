@@ -1,0 +1,77 @@
+@import "menu.css";
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  height: 650px;
+  padding: 10px 0px 0px 0px;
+  margin: 10px 0px 10px 0px;
+}
+
+.row{
+  margin: 0 -5px;
+  padding: 0px 0px 0px 0px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  border: 1px solid red;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+}
+
+.Pret {
+  color: grey;
+  font-size: 25px;
+}
+
+.button1 {
+border-bottom: 1px solid red;
+padding: 0px;
+}
+
+.button1:hover{
+  filter: saturate(500%);
+}
+
+.cart {
+  border: 1px solid red;
+  outline: 8px 5px 0px 5px;
+  padding: 8px;
+  color: red;
+  background-color: #bfbfbf;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 20px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  border-radius: 12px;
+}
+
+.cart:hover {
+  background-color: red;
+  color: white;
+}

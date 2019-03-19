@@ -1,0 +1,88 @@
+ul#menu {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    background-color: #f1f1f1;
+    position: sticky;
+    align-items: center; 
+}
+
+#menu li {
+    float: left;
+}
+
+#menu li img {
+    height: 2em;
+    width: 2em;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#menu li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 10px 12px;
+    text-decoration: none;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 14px;
+}
+
+#menu li a:hover:not(.active) {
+    background-color: darkgrey;
+}
+
+#menu .active {
+    background-color: #94b8b8;
+    color: black ; 
+}
+
+
+@media screen and (min-width: 840px) {
+    ul#menu {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #f1f1f1;
+        position: sticky;
+        align-items: center; 
+    }
+    
+    #menu li {
+        float: left;
+    }
+    
+    #menu li img {
+        height: 2em;
+        width: 2em;
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+    }
+    
+    #menu li a {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-family: "Lucida Console", Monaco, monospace;
+        font-size: 17px;
+    }
+    
+    #menu li a:hover:not(.active) {
+        background-color: darkgrey;
+    }
+    
+    #menu .active {
+        background-color: #94b8b8;
+        color: black ; 
+    }
+}
