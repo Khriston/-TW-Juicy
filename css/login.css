@@ -1,4 +1,5 @@
 .modal{
+    z-index: 1;
     display:none;
     position: fixed;
     left: 0;
@@ -19,7 +20,7 @@
     
 }
 
-input[type=text], input[type=password] {
+#id01 input[type=text], #id01 input[type=password] {
     position: relative;
     width: 50%;
     padding: 12px 20px;

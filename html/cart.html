@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="ro">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
+        <title>Cart</title>
+        <link rel="stylesheet" href="../css/login.css">
         <link rel="stylesheet" type="text/css" href="../css/cart.css">
     </head>
     <body>
@@ -14,11 +16,47 @@
                     <li><a class="active" href="catalog.html">Shop</a></li>
                     <li><a href="specialoffers.html">Special offers</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li><a href="login.html">Login</a></li>
+                    <li><a href="#id01" onclick="document.getElementById('id01').style.display='block'">Login</a></li>
                     <li><a href="cart.html"><img src="../img/cart_transparent.png" alt="Shopping Cart"></a></li>
                 </ul>
             </nav>
         </header>
+        
+        <div id="id01" class="modal">
+            
+            <form class="modalContent animation">
+                <div class="Login">
+                    <h1>Login</h1>
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="closeModal">&times;</span>
+                </div>
+
+                <div class="formular">
+                    <label for="name"><b>Username: </b></label>
+                    <input type="text" id="name" placeholder="Enter Username" name="name" required>
+                </div>
+                <div>
+                    <label for="password"><b>Password: </b></label>
+                    <input type="password" id="password" placeholder="Enter Password" name="password" required>
+                </div>
+                <div>
+                    <button type="submit">Login</button>
+                </div>
+                
+                <div class="container" style="background-color: #f1f1f1">
+                    <div><button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelButton">Cancel</button></div>
+                    <div><a href="createAccount.html">Create Account</a></div>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            var modal = document.getElementById('id01');
+            window.onclick = function(event){
+                if(event.target==modal){
+                    modal.style.display = 'none';
+                }
+            }
+        </script>
 
         <div class="cart">
                 <div class="title">

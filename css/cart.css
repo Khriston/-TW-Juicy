@@ -43,11 +43,6 @@
     height: 120px;
     display: flex;
   }
-   
-  .item:nth-child(3) {
-    border-top:  1px solid #E1E8EE;
-    border-bottom:  1px solid #E1E8EE;
-  }
 
   .buttons {
     position: relative;
@@ -119,7 +114,7 @@
     text-align: center;
     width: 32px;
     font-size: 16px;
-    color: #43484D;
+    color: rgb(0, 0, 0);
     font-weight: 300;
   }
    
@@ -160,8 +155,11 @@
   .checkout-btn a {
       color: #E1E8EE;
       text-decoration: none;
-      text-shadow: #43484D;
       font-size: 1.2em;
+  }
+
+  .checkout-btn:hover {
+      filter: saturate(200%);
   }
 
   footer{
