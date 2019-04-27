@@ -32,19 +32,21 @@ if(isset($_POST['emailAddress']) and !empty($_POST['emailAddress'])){
                 if(isset($_POST['repeatPassword']) and !empty($_POST['repeatPassword'])){
                     if(isset($_POST['address']) and !empty($_POST['address'])){
                         $email = $_POST['emailAddress'];
-                        $name = $_POST['firstNAme'];
+                        $name = $_POST['firstName'];
                         $surname = $_POST['lastName'];
                         $password = $_POST['password'];
                         $secondPassword = $_POST['repeatPassword'];
                         $address = $_POST['address'];
+                        
                         if(strpos($email, '@')){
                             if($password == $secondPassword){
                                 if(strlen($password) > 5){
                                     $conn = DB::getConnection(DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD);
-                                    $stmt = $conn->prepare('INSERT INTO clienti(id_client, adresa, email, nume, prenume, parola) VALUES(?, ?, ?, ?, ?, ?);');
-                                    $stmt->bind_param('isssss', $conn->insert_id, $address, $email, $name, $surname, $password);
+                                    $id = $conn->insert_id;
+                                    $stmt = $conn->prepare("INSERT INTO clienti(id_client, adresa, email, nume, prenume, parola) VALUES(?, ?, ?, ?, ?, ?);");
+                                    $stmt->bind_param('isssss', $id, $address, $email, $name, $surname, $password);
                                     $check = $stmt->execute();
-
+                                    
                                     if(! $check){
                                         echo 'Database error!';
                                     }
@@ -77,3 +79,4 @@ if(isset($_POST['emailAddress']) and !empty($_POST['emailAddress'])){
 } else{
     $errors['email'] = 'Please insert your email address!';
 }
+?>
