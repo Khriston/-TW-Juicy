@@ -1,3 +1,4 @@
+<?php include_once ('../back_end/createAccount.php'); ?>
 <!DOCTYPE html> 
 <html lang="ro">
     <head>
