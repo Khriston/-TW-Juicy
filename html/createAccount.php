@@ -1,5 +1,5 @@
 <?php include_once ('../back_end/createAccount.php'); ?>
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="ro">
     <head>
         <title>Create Account</title>
@@ -10,7 +10,7 @@
         <div class="formular">
             <div>
                 <label for="email"><b>Email: </b></label>
-                <input type="text" id="email" placeholder="email adress" name="emailAdress" required>
+                <input type="text" id="email" placeholder="email address" name="emailAddress" required>
             </div>
 
             <div>
@@ -31,11 +31,16 @@
             <div>
                 <label for="repeatPassword"><b>Repeat password: </b></label>
                 <input type="password" id="repeatPassword" placeholder="repeat password" name="repeatPassword" required>
-            </div>     
+            </div>
+
+            <div>
+                <label for="address"><b>address</b></label>
+                <input type="text" id="address" placeholder="address" name="address" required>
+            </div>
         </div>
         <div>
-            <button type="button" class="signUpButton">SignUp</button>
-            <a class="cancelButton" href="login.html">Cancel</a>
+            <a class="signUpButton" href="index.html">SignUp</a>
+            <a class="cancelButton" href="index.html">Cancel</a>
         </div>
         <div>
             <p>By creating an account you agree to our <a href="tp.html" style="color:blue">Terms & Privacy</a>.</p>
