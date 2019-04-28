@@ -47,5 +47,6 @@ CREATE TABLE detine(
 
 CREATE TABLE vanzator(
     id_vanzator INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nume VARCHAR(50)
+    nume VARCHAR(40),
+    parola VARCHAR(40)
 );
