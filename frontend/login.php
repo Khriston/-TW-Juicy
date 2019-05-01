@@ -1,3 +1,4 @@
+<?php include_once('../backend/login.php'); ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,15 +15,15 @@
                 </div>
 
                 <div class="formular">
-                    <label for="name"><b>Username: </b></label>
-                    <input type="text" placeholder="Enter Username" name="name" required>
+                    <label for="email"><b>Username: </b></label>
+                    <input type="text" placeholder="Enter Email" name="email" required>
                 </div>
                 <div>
                     <label for="password"><b>Password: </b></label>
                     <input type="password" placeholder="Enter Password" name="passd" required>
                 </div>
                 <div>
-                    <button type="submit">Login</button>
+                    <button type="submit" formaction="catalog.html" formmethod="POST">Login</button>
                 </div>
                 
                 <div class="container" style="background-color: #f1f1f1">
