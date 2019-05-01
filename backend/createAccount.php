@@ -31,6 +31,8 @@ if(isset($_POST['emailAddress']) and !empty($_POST['emailAddress'])){
             if(isset($_POST['password']) and !empty($_POST['password'])){
                 if(isset($_POST['repeatPassword']) and !empty($_POST['repeatPassword'])){
                     if(isset($_POST['address']) and !empty($_POST['address'])){
+                        $_SESSION['loggedin'] = true;
+                        $_SESSION['username'] = $email;
                         $email = $_POST['emailAddress'];
                         $name = $_POST['firstName'];
                         $surname = $_POST['lastName'];
