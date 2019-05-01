@@ -8,7 +8,7 @@
 
         <div id="id01" class="modal">
             
-            <form class="modalContent animation">
+            <form class="modalContent animation" action="login.php" method="POST">
                 <div class="Login">
                     <h1>Login</h1>
                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="closeModal">&times</span>
