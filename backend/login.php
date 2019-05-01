@@ -16,6 +16,7 @@ $errors = array(
 
 if(isset($_POST['email']) && !empty($_POST['email'])){
     if(isset($_POST['passd']) && !empty($_POST['passd'])){
+        session_start();
         $email = $_POST['email'];
         $password = $_POST['passd'];
         $conn = DB::getConnection(  DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD);
@@ -24,9 +25,10 @@ if(isset($_POST['email']) && !empty($_POST['email'])){
         $stmt->execute();
         $result = $stmt->get_result();
         if($result->num_rows > 0){
-            session_start();
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $email;
+        } else{
+            $errors['email'] = 'Wrong email or password!';
         }
     } else{
         $errors['passd'] = 'Please insert your password!';
@@ -34,4 +36,4 @@ if(isset($_POST['email']) && !empty($_POST['email'])){
 } else{
     $errors['email'] = 'Please insert your email!';
 }
-
+?>
