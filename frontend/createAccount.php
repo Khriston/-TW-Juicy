@@ -40,8 +40,8 @@
                 </div>
             </div>
             <div>
-                <input type="submit">
-                <a class="cancelButton" href="index.html">Cancel</a>
+                <button type="submit">Submit</button>
+                <a class="cancelButton" href="index.php">Cancel</a>
             </div>
             <div>
                 <p>By creating an account you agree to our <a href="tp.html" style="color:blue">Terms & Privacy</a>.</p>
