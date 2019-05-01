@@ -31,8 +31,6 @@ if(isset($_POST['emailAddress']) and !empty($_POST['emailAddress'])){
             if(isset($_POST['password']) and !empty($_POST['password'])){
                 if(isset($_POST['repeatPassword']) and !empty($_POST['repeatPassword'])){
                     if(isset($_POST['address']) and !empty($_POST['address'])){
-                        $_SESSION['loggedin'] = true;
-                        $_SESSION['username'] = $email;
                         $email = $_POST['emailAddress'];
                         $name = $_POST['firstName'];
                         $surname = $_POST['lastName'];
@@ -43,6 +41,9 @@ if(isset($_POST['emailAddress']) and !empty($_POST['emailAddress'])){
                         if(strpos($email, '@')){
                             if($password == $secondPassword){
                                 if(strlen($password) > 5){
+                                    session_start();
+                                    $_SESSION['loggedin'] = true;
+                                    $_SESSION['username'] = $email;
                                     $conn = DB::getConnection(DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD);
                                     $id = $conn->insert_id;
                                     $stmt = $conn->prepare("INSERT INTO clienti(id_client, adresa, email, nume, prenume, parola) VALUES(?, ?, ?, ?, ?, ?);");
@@ -80,10 +81,6 @@ if(isset($_POST['emailAddress']) and !empty($_POST['emailAddress'])){
     }
 } else{
     $errors['email'] = 'Please insert your email address!';
-}
-
-foreach($error as $errors){
-    echo $error . ' ';
 }
 
 ?>
