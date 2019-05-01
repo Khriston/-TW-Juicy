@@ -4,7 +4,6 @@
         <link rel="stylesheet" href="../css/login.css"></link>
     </head>
     <body>
-        <button onclick="document.getElementById('id01').style.display='block'">Login/Register</button>
 
         <div id="id01" class="modal">
             
@@ -28,7 +27,7 @@
                 
                 <div class="container" style="background-color: #f1f1f1">
                     <div><button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelButton">Cancel</button></div>
-                    <div><a type="button" href="createAccount.html">Create Account</button></div>
+                    <div><a type="button" href="createAccount.php">Create Account</a></div>
                 </div>
             </form>
         </div>
