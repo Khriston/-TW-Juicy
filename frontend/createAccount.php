@@ -1,4 +1,4 @@
-<?php include_once ('../back_end/createAccount.php'); ?>
+<?php include_once ('../backend/createAccount.php'); ?>
 <!DOCTYPE html>
 <html lang="ro">
     <head>
