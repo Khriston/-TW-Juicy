@@ -79,4 +79,9 @@ if(isset($_POST['emailAddress']) and !empty($_POST['emailAddress'])){
 } else{
     $errors['email'] = 'Please insert your email address!';
 }
+
+foreach($error as $errors){
+    echo $error . ' ';
+}
+
 ?>
