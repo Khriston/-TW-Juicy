@@ -36,7 +36,9 @@ CREATE TABLE produse(
     id_vanzator INT NOT NULL,
     nume VARCHAR(50),
     categorie VARCHAR(50),
-    pret INT NOT NULL
+    pret INT NOT NULL,
+    nou BOOLEAN NOT NULL DEFAULT 1,
+    data_adaugarii TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE detine(
