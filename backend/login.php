@@ -47,6 +47,8 @@ if(isset($_POST['email']) && !empty($_POST['email'])){
 
         if($_SESSION['loggedin'] == false) {
             $errors = 'Wrong password or email';
+        } else{
+            header("Location: ../frontend/index.php");
         }
     } else{
         $errors['passd'] = 'Please insert your password!';
