@@ -41,17 +41,23 @@ if(isset($_POST['emailAddress']) and !empty($_POST['emailAddress'])){
                         if(strpos($email, '@')){
                             if($password == $secondPassword){
                                 if(strlen($password) > 5){
-                                    session_start();
-                                    $_SESSION['loggedin'] = true;
-                                    $_SESSION['username'] = $email;
+                                    $password = md5($password);
                                     $conn = DB::getConnection(DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD);
-                                    $id = $conn->insert_id;
-                                    $stmt = $conn->prepare("INSERT INTO clienti(id_client, adresa, email, nume, prenume, parola) VALUES(?, ?, ?, ?, ?, ?);");
-                                    $stmt->bind_param('isssss', $id, $address, $email, $name, $surname, $password);
-                                    $check = $stmt->execute();
-                                    
-                                    if(! $check){
-                                        echo 'Database error!';
+                                    $stmt = $conn->prepare("SELECT * FROM clienti WHERE email=? and nume=? and parola=?;");
+                                    $stmt->bind_param('sss', $email, $name, $password);
+                                    $stmt->execute();
+                                    $result = $stmt->get_result();
+                                    if($result->num_rows == 0){
+                                        $id = $conn->insert_id;
+                                        $stmt = $conn->prepare("INSERT INTO clienti(id_client, adresa, email, nume, prenume, parola) VALUES(?, ?, ?, ?, ?, ?);");
+                                        $stmt->bind_param('isssss', $id, $address, $email, $name, $surname, $password);
+                                        $check = $stmt->execute();
+
+                                        if(! $check){
+                                            echo 'Database error!';
+                                        }
+                                    } else{
+                                        $errors['email'] = 'Name already exists';
                                     }
 
                                     $stmt->close();
