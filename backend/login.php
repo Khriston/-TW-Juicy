@@ -28,6 +28,7 @@ if(isset($_POST['email']) && !empty($_POST['email'])){
         if($result->num_rows > 0){
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $email;
+            $_SESSION['seller'] = false;
         } else{
             $errors['email'] = 'Wrong email or password!';
         }
