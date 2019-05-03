@@ -37,7 +37,7 @@
 
     </div>
     <div>
-        <button type="submit">Submit</button>
+        <button type="submit" name="submit">Submit</button>
         <a class="cancelButton" href="index.php">Cancel</a>
     </div>
 </form>
