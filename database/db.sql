@@ -37,6 +37,7 @@ CREATE TABLE produse(
     nume VARCHAR(50),
     categorie VARCHAR(50),
     pret INT NOT NULL,
+    path_poza VARCHAR(255),
     nou BOOLEAN NOT NULL DEFAULT 1,
     data_adaugarii TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
