@@ -19,11 +19,12 @@ if(isset($_POST['email']) && !empty($_POST['email'])){
         session_start();
         $email = $_POST['email'];
         $password = $_POST['passd'];
-        $clienti = 'clienti';
+
+        $clienti = "clienti";
 
         $conn = DB::getConnection(  DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD);
-        $stmt = $conn->prepare("SELECT * FROM ? WHERE email=? and parola=?;");
-        $stmt->bind_param('sss', $clienti, $email, $password);
+        $stmt = $conn->prepare("SELECT * FROM clienti WHERE email=? and parola=?;");
+        $stmt->bind_param('ss', $email, $password);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -32,8 +33,8 @@ if(isset($_POST['email']) && !empty($_POST['email'])){
             $_SESSION['username'] = $email;
             $_SESSION['seller'] = false;
         } else{
-            $vanzator = 'vanzator';
-            $stmt->bind_param('sss', $vanzator, $email, $password);
+            $stmt = $conn->prepare("SELECT * FROM vanzator WHERE email=? and parola=?;");
+            $stmt->bind_param('ss', $email, $password);
             $stmt->execute();
             $result = $stmt->get_result();
 
