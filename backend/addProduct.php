@@ -17,6 +17,7 @@ $errors = array(
     'path' => ''
 );
 
+if($_SESSION['loggedin'] == true and $_SESSION['seller'] == true) {
     if (isset($_POST['productName']) && !empty($_POST['productName'])) {
         if (isset($_POST['flavours']) && !empty($_POST['flavours'])) {
             if (isset($_POST['price']) && !empty($_POST['price'])) {
@@ -33,13 +34,13 @@ $errors = array(
 
                     $allowed = array('jpeg', 'png', 'jpg');
 
-                    if(in_array($fileExtension, $allowed)){
-                        if($file['error'] === 0){
-                            if($file['size'] < 1000000){
+                    if (in_array($fileExtension, $allowed)) {
+                        if ($file['error'] === 0) {
+                            if ($file['size'] < 1000000) {
                                 $email = $_SESSION['username'];
 
                                 $newFileName = $email . '_' . $productName . '_' . $fileName;
-                                $fileDestination = 'products/'.$newFileName;
+                                $fileDestination = 'products/' . $newFileName;
 
                                 move_uploaded_file($file['tmp_name'], $fileDestination);
 
@@ -57,16 +58,16 @@ $errors = array(
                                 $check = $stmt->execute();
 
                                 header("Location: ../frontend/index.php");
-                                if(! $check){
+                                if (!$check) {
                                     echo 'Database error!';
                                 }
-                            } else{
+                            } else {
                                 $errors['path'] = 'Your photo is too big!';
                             }
-                        } else{
+                        } else {
                             $errors['path'] = 'There was an error uploading your file!';
                         }
-                    } else{
+                    } else {
                         $errors['path'] = 'The file should have png, jpg or jpeg extension!';
                     }
                 } else {
@@ -81,3 +82,6 @@ $errors = array(
     } else {
         $errors['name'] = 'Please select a name!';
     }
+} else{
+    $errors['name'] = 'You must be a seller to upload products!';
+}
