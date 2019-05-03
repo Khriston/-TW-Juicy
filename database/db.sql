@@ -35,7 +35,6 @@ CREATE TABLE produse(
     id_produs INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     id_vanzator INT NOT NULL,
     nume VARCHAR(50),
-    categorie VARCHAR(50),
     pret INT NOT NULL,
     acidulat BOOLEAN NOT NULL DEFAULT 0,
     arome VARCHAR(512),
