@@ -19,6 +19,7 @@ if(isset($_POST['email']) && !empty($_POST['email'])){
         session_start();
         $email = $_POST['email'];
         $password = $_POST['passd'];
+        $password = md5($password);
         $conn = DB::getConnection(  DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD);
         $stmt = $conn->prepare("SELECT * FROM clienti WHERE email=? and parola=?;");
         $stmt->bind_param('ss', $email, $password);
