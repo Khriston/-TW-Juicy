@@ -22,7 +22,7 @@
 
         <div>
             <label for="price"><b>Password: </b></label>
-            <input type="text" id="price" placeholder="price" name="price" required>
+            <input type="number" id="price" placeholder="price" name="price" required>
         </div>
 
         <div>
@@ -33,6 +33,11 @@
         <div>
             <label for="file"><b>Photo </b></label>
             <input type="file" id="file" name="file">
+        </div>
+        
+        <div>
+            <label for="quantity"><b>Initial quantity: </b></label>
+            <input type="number" id="quantity" name="quantity" min="50" required>
         </div>
 
     </div>
