@@ -42,7 +42,7 @@ if($_SESSION['loggedin'] == true and $_SESSION['seller'] == true) {
                                 if ($file['size'] < 1000000) {
                                     $email = $_SESSION['username'];
 
-                                    $newFileName = $email . '_' . $productName . '_' . $fileName;
+                                    $newFileName = $email . '_' . $productName . "." . $fileExtension;
                                     $fileDestination = 'products/' . $newFileName;
 
                                     move_uploaded_file($file['tmp_name'], $fileDestination);
@@ -55,24 +55,30 @@ if($_SESSION['loggedin'] == true and $_SESSION['seller'] == true) {
                                     $row = $result->fetch_assoc();
                                     $id_seller = $row['id_vanzator'];
 
-                                    $stmt = $conn->prepare("INSERT INTO produse(id_produs, id_vanzator, nume, pret, acidulat, arome, path_poza) VALUES(?, ?, ?, ?, ?, ?, ?);");
-                                    $id_product = $conn->insert_id;
-                                    $sour = $_POST['sour'] == 'Yes' ? 1 : 0;
-                                    $stmt->bind_param('iisiiss', $id_product, $id_seller, $productName, $price, $sour, $flavours, $newFileName);
+                                    $stmt = $conn->prepare("INSERT INTO produse(id_vanzator, nume, pret, acidulat, arome, path_poza) VALUES(?, ?, ?, ?, ?, ?);");
+                                    $sour = isset($_POST['sour']) ? 1 : 0;
+                                    $stmt->bind_param('isiiss', $id_seller, $productName, $price, $sour, $flavours, $newFileName);
                                     $check = $stmt->execute();
-                                    
+
                                     if (!$check) {
                                         echo 'Database error!';
                                     }
-                                    
+
+                                    $stmt = $conn->prepare("SELECT id_produs FROM produse WHERE id_vanzator=? and nume=?;");
+                                    $stmt->bind_param('is', $id_seller, $productName);
+                                    $stmt->execute();
+                                    $result = $stmt->get_result();
+                                    $row = $result->fetch_assoc();
+                                    $id_product = $row['id_produs'];
+
                                     $stmt = $conn->prepare("INSERT INTO detine(id_vanzator, id_produs, cantitate) VALUES(?, ?, ?);");
                                     $stmt->bind_param('iii', $id_seller, $id_product, $quantity);
                                     $check = $stmt->execute();
-                                    
+
                                     if (!$check) {
                                         echo 'Database error!';
                                     }
-                                    
+
                                     header("Location: ../frontend/index.php");
                                 } else {
                                     $errors['path'] = 'Your photo is too big!';
