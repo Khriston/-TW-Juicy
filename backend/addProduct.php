@@ -14,64 +14,80 @@ $errors = array(
     'name' => '',
     'flavor' => '',
     'price' => '',
-    'path' => ''
+    'path' => '',
+    'quantity' => ''
 );
 
 if($_SESSION['loggedin'] == true and $_SESSION['seller'] == true) {
     if (isset($_POST['productName']) && !empty($_POST['productName'])) {
         if (isset($_POST['flavours']) && !empty($_POST['flavours'])) {
             if (isset($_POST['price']) && !empty($_POST['price'])) {
-                if (isset($_POST['submit'])) {
-                    $productName = $_POST['productName'];
-                    $flavours = $_POST['flavours'];
-                    $price = $_POST['price'];
-                    $file = $_FILES['file'];
+                if(isset($_POST['quantity']) && !empty($_POST['quantity'])){
+                    if (isset($_POST['submit'])) {
+                        $productName = $_POST['productName'];
+                        $flavours = $_POST['flavours'];
+                        $price = $_POST['price'];
+                        $file = $_FILES['file'];
+                        $quantity = $_POST['quantity'];
 
-                    $fileName = $file['name'];
+                        $fileName = $file['name'];
 
-                    $fileTokens = explode('.', $fileName);
-                    $fileExtension = strtolower(end($fileTokens));
+                        $fileTokens = explode('.', $fileName);
+                        $fileExtension = strtolower(end($fileTokens));
 
-                    $allowed = array('jpeg', 'png', 'jpg');
+                        $allowed = array('jpeg', 'png', 'jpg');
 
-                    if (in_array($fileExtension, $allowed)) {
-                        if ($file['error'] === 0) {
-                            if ($file['size'] < 1000000) {
-                                $email = $_SESSION['username'];
+                        if (in_array($fileExtension, $allowed)) {
+                            if ($file['error'] === 0) {
+                                if ($file['size'] < 1000000) {
+                                    $email = $_SESSION['username'];
 
-                                $newFileName = $email . '_' . $productName . '_' . $fileName;
-                                $fileDestination = 'products/' . $newFileName;
+                                    $newFileName = $email . '_' . $productName . '_' . $fileName;
+                                    $fileDestination = 'products/' . $newFileName;
 
-                                move_uploaded_file($file['tmp_name'], $fileDestination);
+                                    move_uploaded_file($file['tmp_name'], $fileDestination);
 
-                                $conn = DB::getConnection(DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD);
-                                $stmt = $conn->prepare("SELECT id_vanzator FROM vanzator WHERE email = ?;");
-                                $stmt->bind_param('s', $email);
-                                $stmt->execute();
-                                $result = $stmt->get_result();
-                                $row = $result->fetch_assoc();
-                                $id = $row['id_vanzator'];
+                                    $conn = DB::getConnection(DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD);
+                                    $stmt = $conn->prepare("SELECT id_vanzator FROM vanzator WHERE email = ?;");
+                                    $stmt->bind_param('s', $email);
+                                    $stmt->execute();
+                                    $result = $stmt->get_result();
+                                    $row = $result->fetch_assoc();
+                                    $id_seller = $row['id_vanzator'];
 
-                                $stmt = $conn->prepare("INSERT INTO produse(id_vanzator, nume, pret, acidulat, arome, path_poza) VALUES(?, ?, ?, ?, ?, ?);");
-                                $sour = $_POST['sour'] == 'Yes' ? 1 : 0;
-                                $stmt->bind_param('isiiss', $id, $productName, $price, $sour, $flavours, $newFileName);
-                                $check = $stmt->execute();
-
-                                header("Location: ../frontend/index.php");
-                                if (!$check) {
-                                    echo 'Database error!';
+                                    $stmt = $conn->prepare("INSERT INTO produse(id_produs, id_vanzator, nume, pret, acidulat, arome, path_poza) VALUES(?, ?, ?, ?, ?, ?, ?);");
+                                    $id_product = $conn->insert_id;
+                                    $sour = $_POST['sour'] == 'Yes' ? 1 : 0;
+                                    $stmt->bind_param('iisiiss', $id_product, $id_seller, $productName, $price, $sour, $flavours, $newFileName);
+                                    $check = $stmt->execute();
+                                    
+                                    if (!$check) {
+                                        echo 'Database error!';
+                                    }
+                                    
+                                    $stmt = $conn->prepare("INSERT INTO detine(id_vanzator, id_produs, cantitate) VALUES(?, ?, ?);");
+                                    $stmt->bind_param('iii', $id_seller, $id_product, $quantity);
+                                    $check = $stmt->execute();
+                                    
+                                    if (!$check) {
+                                        echo 'Database error!';
+                                    }
+                                    
+                                    header("Location: ../frontend/index.php");
+                                } else {
+                                    $errors['path'] = 'Your photo is too big!';
                                 }
                             } else {
-                                $errors['path'] = 'Your photo is too big!';
+                                $errors['path'] = 'There was an error uploading your file!';
                             }
                         } else {
-                            $errors['path'] = 'There was an error uploading your file!';
+                            $errors['path'] = 'The file should have png, jpg or jpeg extension!';
                         }
                     } else {
-                        $errors['path'] = 'The file should have png, jpg or jpeg extension!';
+                        $errors['path'] = 'Please select a representative photo!';
                     }
-                } else {
-                    $errors['path'] = 'Please select a representative photo!';
+                } else{
+                    $errors['quantity'] = 'You need at least 50 pieces to sell!';
                 }
             } else {
                 $errors['price'] = 'Please select a price!';
