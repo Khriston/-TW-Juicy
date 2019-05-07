@@ -26,7 +26,7 @@
             <button type="submit">Submit</button>
         </div>
     </form>
-
+    <a href = "addProduct.php" methods="POST">add product</a>
     <footer>Project by UAIC Students</footer>
 
 </body>

@@ -23,7 +23,7 @@
                     <input type="password" placeholder="Enter Password" name="passd" required>
                 </div>
                 <div>
-                    <button type="submit" formaction="catalog.html" formmethod="POST">Login</button>
+                    <button type="submit" formaction="index.php" formmethod="POST">Login</button>
                 </div>
                 
                 <div class="container" style="background-color: #f1f1f1">
