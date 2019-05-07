@@ -18,7 +18,7 @@ $errors = array(
     'quantity' => ''
 );
 
-if($_SESSION['loggedin'] == true and $_SESSION['seller'] == true) {
+//if($_SESSION['loggedin'] == true and $_SESSION['seller'] == true) {
     if (isset($_POST['productName']) && !empty($_POST['productName'])) {
         if (isset($_POST['flavours']) && !empty($_POST['flavours'])) {
             if (isset($_POST['price']) && !empty($_POST['price'])) {
@@ -40,7 +40,7 @@ if($_SESSION['loggedin'] == true and $_SESSION['seller'] == true) {
                         if (in_array($fileExtension, $allowed)) {
                             if ($file['error'] === 0) {
                                 if ($file['size'] < 1000000) {
-                                    $email = $_SESSION['username'];
+                                    $email = 'vimanmanuel@gmail.com';
 
                                     $newFileName = $email . '_' . $productName . "." . $fileExtension;
                                     $fileDestination = 'products/' . $newFileName;
@@ -103,7 +103,7 @@ if($_SESSION['loggedin'] == true and $_SESSION['seller'] == true) {
         }
     } else {
         $errors['name'] = 'Please select a name!';
-    }
+    }/*
 } else{
     $errors['name'] = 'You must be a seller to upload products!';
 }
