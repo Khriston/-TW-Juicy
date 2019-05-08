@@ -16,10 +16,9 @@ $errors = array(
 
 if(isset($_POST['email']) && !empty($_POST['email'])){
     if(isset($_POST['passd']) && !empty($_POST['passd'])){
-        session_start();
         $email = $_POST['email'];
         $password = $_POST['passd'];
-
+        //$password = md5($password);
         $clienti = "clienti";
 
         $conn = DB::getConnection(  DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD);
@@ -32,6 +31,7 @@ if(isset($_POST['email']) && !empty($_POST['email'])){
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $email;
             $_SESSION['seller'] = false;
+            header("Location: ./catalogGenerator.php");
         } else{
             $stmt = $conn->prepare("SELECT * FROM vanzator WHERE email=? and parola=?;");
             $stmt->bind_param('ss', $email, $password);
@@ -42,14 +42,11 @@ if(isset($_POST['email']) && !empty($_POST['email'])){
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $email;
                 $_SESSION['seller'] = true;
+                header("Location: ../frontend/addProduct.php");
             }
         }
 
-        if($_SESSION['loggedin'] == false) {
-            $errors = 'Wrong password or email';
-        } else{
-            header("Location: ../frontend/index.php");
-        }
+        header("Location: ../frontend/index.php");
     } else{
         $errors['passd'] = 'Please insert your password!';
     }

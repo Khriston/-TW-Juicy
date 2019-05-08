@@ -42,6 +42,7 @@ if(isset($_POST['emailAddress']) and !empty($_POST['emailAddress'])){
                             if($password == $secondPassword){
                                 if(strlen($password) > 5){
                                     $password = md5($password);
+
                                     $conn = DB::getConnection(DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD);
                                     $stmt = $conn->prepare("SELECT * FROM clienti WHERE email=? and nume=? and parola=?;");
                                     $stmt->bind_param('sss', $email, $name, $password);

@@ -8,7 +8,6 @@
 
 include_once ('../database/database.php');
 include_once ('../database/config.php');
-session_start();
 
 $errors = array(
     'name' => '',
