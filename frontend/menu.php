@@ -1,4 +1,4 @@
-<?php include_once('login.php') ?>
+<?php include_once('login.php');?>
 <nav>
     <ul id="menu">
         <li><a href="index.php">Home</a></li>

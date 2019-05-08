@@ -8,7 +8,7 @@
 
         <div id="id01" class="modal">
             
-            <form class="modalContent animation" action="login.php" method="POST">
+            <form class="modalContent animation">
                 <div class="Login">
                     <h1>Login</h1>
                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="closeModal">&times</span>
@@ -23,7 +23,7 @@
                     <input type="password" placeholder="Enter Password" name="passd" required>
                 </div>
                 <div>
-                    <button type="submit" formaction="index.php" formmethod="POST">Login</button>
+                    <button type="submit" formaction="../backend/login.php" formmethod="POST">Login</button>
                 </div>
                 
                 <div class="container" style="background-color: #f1f1f1">

@@ -1,5 +1,6 @@
 <?php include_once('menu.php');
-      include_once('../backend/addSeller.php');?>
+      include_once('../backend/addSeller.php');
+      ?>
 <!DOCTYPE html>
 <html lang="ro">
 
