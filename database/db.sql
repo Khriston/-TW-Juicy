@@ -28,7 +28,7 @@ CREATE TABLE lista_cumparaturi(
 CREATE TABLE cantitate_cumparata(
     id_lista_cumparaturi INT NOT NULL,
     id_produs INT NOT NULL,
-    cantitate INT NOT NOULL
+    cantitate INT NOT NULL
 );
 
 CREATE TABLE produse(
