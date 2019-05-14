@@ -44,7 +44,7 @@ if(isset($_POST['emailAddress']) and !empty($_POST['emailAddress'])){
                                     $password = md5($password);
 
                                     $conn = DB::getConnection(DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD);
-                                    $stmt = $conn->prepare("SELECT * FROM clienti WHERE email=? and nume=? and parola=?;");
+                                    $stmt = $conn->prepare("SELECT * FROM clienti WHERE email=?;");
                                     $stmt->bind_param('sss', $email, $name, $password);
                                     $stmt->execute();
                                     $result = $stmt->get_result();
@@ -58,7 +58,7 @@ if(isset($_POST['emailAddress']) and !empty($_POST['emailAddress'])){
                                             echo 'Database error!';
                                         }
                                     } else{
-                                        $errors['email'] = 'Name already exists';
+                                        $errors['email'] = 'Email already in use';
                                     }
 
                                     $stmt->close();
