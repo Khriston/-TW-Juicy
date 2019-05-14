@@ -1,6 +1,5 @@
 
-        <?php include_once('menu.php');
-          session_start();?>
+        <?php include_once('menu.php');?>
         <!DOCTYPE html>
         <html lang="ro">
         <head>
@@ -26,6 +25,66 @@
                             <p class="Pret">5 LEI</p>
                             <p>lamaie</p>
                             <p><a href = "../backend/addToCart.php?id_produs=1" class = "btn btn-primary" role = "button">Adauga in cos</a></p>
+                        </div>
+                  </div>
+                  
+                 <div class="column">
+                        <div class="card">
+                            <a class="button1" href="DetaliiCola.html">
+                                <img src="../backend/products/vimanmanuel@gmail.com_cola clasic.jpg" alt="cola clasic" style="width:100%">
+                            </a>
+                            <h2> cola clasic</h2>
+                            <p class="Pret">7 LEI</p>
+                            <p>cola</p>
+                            <p><a href = "../backend/addToCart.php?id_produs=2" class = "btn btn-primary" role = "button">Adauga in cos</a></p>
+                        </div>
+                  </div>
+                  
+                 <div class="column">
+                        <div class="card">
+                            <a class="button1" href="DetaliiCola.html">
+                                <img src="../backend/products/vimanmanuel@gmail.com_ceai negru Bob Marley.jpg" alt="ceai negru Bob Marley" style="width:100%">
+                            </a>
+                            <h2> ceai negru Bob Marley</h2>
+                            <p class="Pret">10 LEI</p>
+                            <p>ceai negru</p>
+                            <p><a href = "../backend/addToCart.php?id_produs=3" class = "btn btn-primary" role = "button">Adauga in cos</a></p>
+                        </div>
+                  </div>
+                  
+                 <div class="column">
+                        <div class="card">
+                            <a class="button1" href="DetaliiCola.html">
+                                <img src="../backend/products/vimanmanuel@gmail.com_pepsi.jpg" alt="pepsi" style="width:100%">
+                            </a>
+                            <h2> pepsi</h2>
+                            <p class="Pret">4 LEI</p>
+                            <p>pepsi</p>
+                            <p><a href = "../backend/addToCart.php?id_produs=4" class = "btn btn-primary" role = "button">Adauga in cos</a></p>
+                        </div>
+                  </div>
+                  
+                 <div class="column">
+                        <div class="card">
+                            <a class="button1" href="DetaliiCola.html">
+                                <img src="../backend/products/vimanmanuel@gmail.com_vitamin aqua Zn.jpg" alt="vitamin aqua Zn" style="width:100%">
+                            </a>
+                            <h2> vitamin aqua Zn</h2>
+                            <p class="Pret">12 LEI</p>
+                            <p>banane, mure neagra</p>
+                            <p><a href = "../backend/addToCart.php?id_produs=5" class = "btn btn-primary" role = "button">Adauga in cos</a></p>
+                        </div>
+                  </div>
+                  
+                 <div class="column">
+                        <div class="card">
+                            <a class="button1" href="DetaliiCola.html">
+                                <img src="../backend/products/vimanmanuel@gmail.com_Mirinda mere.jpg" alt="Mirinda mere" style="width:100%">
+                            </a>
+                            <h2> Mirinda mere</h2>
+                            <p class="Pret">7 LEI</p>
+                            <p>mere</p>
+                            <p><a href = "../backend/addToCart.php?id_produs=6" class = "btn btn-primary" role = "button">Adauga in cos</a></p>
                         </div>
                   </div>
                   

@@ -39,7 +39,7 @@ $errors = array(
                         if (in_array($fileExtension, $allowed)) {
                             if ($file['error'] === 0) {
                                 if ($file['size'] < 1000000) {
-                                    $email = 'vimanmanuel@gmail.com';
+                                    $email = $_SESSION['username'];
 
                                     $newFileName = $email . '_' . $productName . "." . $fileExtension;
                                     $fileDestination = 'products/' . $newFileName;

@@ -41,7 +41,7 @@ if(isset($_POST['emailSeller']) && !empty(['emailSeller'])){
         header('location:../frontend/index.php');
 
     } else {
-        $error = 'This seller already exists!';
+        $error = 'This email is already in use!';
     }
 
     $stmt->close();

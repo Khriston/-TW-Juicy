@@ -9,7 +9,7 @@
 include_once ('../database/config.php');
 include_once ('../database/database.php');
 
-if($_SESSION['loggedin'] == true) {
+if($_SESSION['loggedin'] == 1) {
     $file = "../frontend/catalog.php";
     $catalog = fopen($file, 'w');
 

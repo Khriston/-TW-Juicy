@@ -18,7 +18,7 @@ if(isset($_POST['email']) && !empty($_POST['email'])){
     if(isset($_POST['passd']) && !empty($_POST['passd'])){
         $email = $_POST['email'];
         $password = $_POST['passd'];
-        //$password = md5($password);
+        $password = md5($password);
         $clienti = "clienti";
 
         $conn = DB::getConnection(  DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD);

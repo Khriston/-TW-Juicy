@@ -28,19 +28,15 @@ CREATE TABLE lista_cumparaturi(
 CREATE TABLE cantitate_cumparata(
     id_lista_cumparaturi INT NOT NULL,
     id_produs INT NOT NULL,
-    cantitate INT NOT NULL
+    cantitate INT NOT NOULL
 );
 
 CREATE TABLE produse(
     id_produs INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     id_vanzator INT NOT NULL,
     nume VARCHAR(50),
-    pret INT NOT NULL,
-    acidulat BOOLEAN NOT NULL DEFAULT 0,
-    arome VARCHAR(512),
-    path_poza VARCHAR(255),
-    nou BOOLEAN NOT NULL DEFAULT 1,
-    data_adaugarii TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    categorie VARCHAR(50),
+    pret INT NOT NULL
 );
 
 CREATE TABLE detine(
@@ -51,6 +47,6 @@ CREATE TABLE detine(
 
 CREATE TABLE vanzator(
     id_vanzator INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(40),
+    nume VARCHAR(40),
     parola VARCHAR(40)
 );
