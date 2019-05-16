@@ -60,6 +60,7 @@ include_once('../frontend/menu.php');
             ?>
         </div>
     </div>
+    <footer>Project by UAIC Students</footer>
 </body>
 </html>
 
