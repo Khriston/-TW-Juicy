@@ -22,7 +22,7 @@ CREATE TABLE plateste_pentru(
 );
 
 CREATE TABLE lista_cumparaturi(
-    id_lista_cumparaturi INT NOT NULL AUTO_INCREMENT PRIMARY KEY
+    id_lista_cumparaturi INT AUTO_INCREMENT PRIMARY KEY
 );
 
 CREATE TABLE cantitate_cumparata(
