@@ -52,7 +52,7 @@ include_once('../frontend/menu.php');
                             <h2> <?php echo $nume ?> </h2>
                             <p class="Pret"><?php echo $pret ?> LEI </p>
                             <p><?php echo $arome ?></p>
-                            <p><button class="btn btn-primary" formaction=<?php echo $adauga_in_cos?>>Adauga in cos</button></p>
+                            <p><a class="btn btn-primary" href=<?php echo $adauga_in_cos?>>Adauga in cos</a></p>
                         </div>
                     </div>
             <?php
@@ -60,7 +60,6 @@ include_once('../frontend/menu.php');
             ?>
         </div>
     </div>
-    <footer>Project by UAIC Students</footer>
 </body>
 </html>
 
