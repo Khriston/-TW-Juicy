@@ -90,6 +90,10 @@ $errors = array(
             $stmt->bind_param('ii', $id_lista_cumparaturi, $id_produs);
             $stmt->execute();
         }
+
+        $stmt->close();
+        $conn->query("UPDATE detine SET cantitate=cantitate-1 WHERE id_produs=$id_produs");
+        
         header("Location: ../backend/catalogGenerator.php");
     } else{
         header("Location: ../frontend/index.php");
