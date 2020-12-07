@@ -1,2 +1,2 @@
 # -TW-Juicy
-Proiect TW
+Proiect materia Tehnologii Web
